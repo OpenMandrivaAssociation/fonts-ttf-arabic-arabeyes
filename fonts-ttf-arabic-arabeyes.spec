@@ -1,7 +1,7 @@
 %define name fonts-ttf-arabic-arabeyes
 %define name_orig	ae_fonts
 %define version 1.1
-%define release %mkrel 3
+%define release %mkrel 4
 %define fontdir	fonts/TTF/arabic/arabeyes
 
 Name:		%{name}
@@ -15,8 +15,6 @@ URL:		http://www.arabeyes.org/project.php?proj=Khotot
 BuildArch:	noarch
 BuildRoot:	%_tmppath/%name-%version-%release-buildroot
 Buildrequires: 	freetype-tools
-Requires(post):		chkfontpath
-Requires(postun):	chkfontpath
 Requires(post):		fontconfig
 Requires(postun):	fontconfig
 Provides:	fonts-ttf-arabic
@@ -44,18 +42,17 @@ cp fonts.scale fonts.dir
 %endif
 popd
 
+mkdir -p %{buildroot}%_sysconfdir/X11/fontpath.d/
+ln -s ../../..%_datadir/%fontdir \
+    %{buildroot}%_sysconfdir/X11/fontpath.d/ttf-arabic-arabeyes:pri=50
+
 %post
-if [ -x %_sbindir/chkfontpath ]; then
-   %_sbindir/chkfontpath -q -a %_datadir/%fontdir
-fi
 touch %_datadir/fonts/TTF
 [ -x %{_bindir}/fc-cache ] && %{_bindir}/fc-cache 
 
 %postun
 # 0 means a real uninstall
 if [ "$1" = "0" ]; then
-   [ -x %_sbindir/chkfontpath ] && \
-   %_sbindir/chkfontpath -q -r %_datadir/%fontdir
    [ -x %{_bindir}/fc-cache ] && %{_bindir}/fc-cache 
 fi
 
@@ -68,6 +65,5 @@ rm -rf %buildroot
 %dir %_datadir/fonts/TTF/
 %dir %_datadir/%fontdir
 %_datadir/%fontdir/*
-
-
+%_sysconfdir/X11/fontpath.d/ttf-arabic-arabeyes:pri=50
 
