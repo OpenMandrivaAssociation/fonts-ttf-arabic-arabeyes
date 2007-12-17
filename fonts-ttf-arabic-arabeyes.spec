@@ -13,7 +13,6 @@ Group:		System/Fonts/True type
 Source:		http://prdownloads.sourceforge.net/arabeyes/%{name_orig}-%{version}.tar.bz2
 URL:		http://www.arabeyes.org/project.php?proj=Khotot
 BuildArch:	noarch
-BuildRoot:	%_tmppath/%name-%version-%release-buildroot
 Buildrequires: 	freetype-tools
 Requires(post):		fontconfig
 Requires(postun):	fontconfig
