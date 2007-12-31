@@ -1,16 +1,16 @@
 %define name fonts-ttf-arabic-arabeyes
 %define name_orig	ae_fonts
-%define version 1.1
-%define release %mkrel 4
+%define version 2.0
+%define release %mkrel 1
 %define fontdir	fonts/TTF/arabic/arabeyes
 
 Name:		%{name}
 Summary:	Free Arabic TrueType fonts
 Version:	%{version}
 Release:	%{release}
-License:	GPL
+License:	GPLv2+
 Group:		System/Fonts/True type
-Source:		http://prdownloads.sourceforge.net/arabeyes/%{name_orig}-%{version}.tar.bz2
+Source:		http://prdownloads.sourceforge.net/arabeyes/%{name_orig}_%{version}.tar.bz2
 URL:		http://www.arabeyes.org/project.php?proj=Khotot
 BuildArch:	noarch
 Buildrequires: 	freetype-tools
@@ -23,7 +23,7 @@ This Package provides Free Arabic TrueType fonts donated under the GPL license
 by arabeyes.org.
 
 %prep
-%setup -n %name_orig-%version -q
+%setup -n %{name_orig}_%version -q
 
 %build
 
@@ -31,7 +31,7 @@ by arabeyes.org.
 rm -rf %buildroot
 
 mkdir -p %buildroot/%_datadir/%fontdir
-cp *.ttf %buildroot/%_datadir/%fontdir
+cp */*.ttf %buildroot/%_datadir/%fontdir
 
 pushd %buildroot/%_datadir/%fontdir
 %_sbindir/ttmkfdir -u > fonts.scale
@@ -60,8 +60,7 @@ rm -rf %buildroot
 
 %files
 %defattr(0644,root,root,0755)
-%doc license.txt
-%dir %_datadir/fonts/TTF/
+%doc README ChangeLog
 %dir %_datadir/%fontdir
 %_datadir/%fontdir/*
 %_sysconfdir/X11/fontpath.d/ttf-arabic-arabeyes:pri=50
