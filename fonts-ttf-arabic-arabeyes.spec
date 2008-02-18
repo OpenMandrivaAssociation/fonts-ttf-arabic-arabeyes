@@ -1,11 +1,11 @@
 %define name fonts-ttf-arabic-arabeyes
 %define name_orig	ae_fonts
 %define version 2.0
-%define release %mkrel 1
+%define release %mkrel 2
 %define fontdir	fonts/TTF/arabic/arabeyes
 
 Name:		%{name}
-Summary:	Free Arabic TrueType fonts
+Summary:	Arabic TrueType fonts
 Version:	%{version}
 Release:	%{release}
 License:	GPLv2+
