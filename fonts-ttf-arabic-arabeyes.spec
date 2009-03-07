@@ -1,7 +1,7 @@
 %define name fonts-ttf-arabic-arabeyes
 %define name_orig	ae_fonts
 %define version 2.0
-%define release %mkrel 3
+%define release %mkrel 4
 %define fontdir	fonts/TTF/arabic/arabeyes
 
 Name:		%{name}
