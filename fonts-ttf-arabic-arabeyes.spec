@@ -14,7 +14,7 @@ Source:		http://prdownloads.sourceforge.net/arabeyes/%{name_orig}_%{version}.tar
 URL:		http://www.arabeyes.org/project.php?proj=Khotot
 BuildArch:	noarch
 BuildRoot:	%_tmppath/%name-%version-%release-buildroot
-Buildrequires: 	freetype-tools
+Buildrequires: 	mkfontscale
 Provides:	fonts-ttf-arabic
 
 %description
@@ -33,11 +33,8 @@ mkdir -p %buildroot/%_datadir/%fontdir
 cp */*.ttf %buildroot/%_datadir/%fontdir
 
 pushd %buildroot/%_datadir/%fontdir
-%_sbindir/ttmkfdir -u > fonts.scale
+mkfontscale
 cp fonts.scale fonts.dir
-%if %mdkversion < 20070
-%_bindir/fc-cache . || touch fonts.cache-1
-%endif
 popd
 
 mkdir -p %{buildroot}%_sysconfdir/X11/fontpath.d/
