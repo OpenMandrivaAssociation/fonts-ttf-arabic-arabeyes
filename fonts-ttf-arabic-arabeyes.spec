@@ -4,7 +4,7 @@
 Name:		fonts-ttf-arabic-arabeyes
 Summary:	Arabic TrueType fonts
 Version:	2.0
-Release:	16
+Release:	17
 License:	GPLv2+
 Group:		System/Fonts/True type
 Url:		http://www.arabeyes.org/project.php?proj=Khotot
