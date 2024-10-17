@@ -7,7 +7,7 @@ Version:	2.0
 Release:	21
 License:	GPLv2+
 Group:		System/Fonts/True type
-Url:		http://www.arabeyes.org/project.php?proj=Khotot
+Url:		https://www.arabeyes.org/project.php?proj=Khotot
 Source0:	http://prdownloads.sourceforge.net/arabeyes/%{oname}_%{version}.tar.bz2
 BuildArch:	noarch
 BuildRequires:	fontconfig
